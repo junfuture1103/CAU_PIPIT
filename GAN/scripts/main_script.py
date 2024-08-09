@@ -13,17 +13,12 @@ FILE_NAME = 'healthcare_dataset.csv'
 PICKLE_DIR = 'pickle'
 
 # Load or create GAN datasets
-def load_or_create_dataset(file_name, gan_class):
-    file_path = os.path.join(PICKLE_DIR, file_name)
+def exist_dataset(file_path):
     if os.path.exists(file_path):
         print(f"Loading datasets from {file_path}")
-        with open(file_path, 'rb') as file:
-            return pickle.load(file)
+        return True
     else:
-        dataset = src.utils.get_gan_dataset(gan_class)
-        with open(file_path, 'wb') as file:
-            pickle.dump(dataset, file)
-        return dataset
+        return False
     
 if __name__ == '__main__':
     # 현재 시간을 얻고 형식화하기
@@ -57,10 +52,21 @@ if __name__ == '__main__':
         
     PICKLE_FILE = os.path.join(PICKLE_DIR, 'gan_dataset.p')
 
-    gan_dataset = load_or_create_dataset('gan_dataset.p', src.utils.get_gan_dataset(src.gans.GAN()))
-    wgan_dataset = load_or_create_dataset('wgan_dataset.p', src.utils.get_gan_dataset(src.gans.WGAN()))
-    wgangp_dataset = load_or_create_dataset('wgangp_dataset.p', src.utils.get_gan_dataset(src.gans.WGANGP()))
-    sngan_dataset = load_or_create_dataset('sngan_dataset.p', src.utils.get_gan_dataset(src.gans.SNGAN()))
+    if exist_dataset(PICKLE_FILE):
+        # PICKLE_FILE에서 pickle 파일 로드
+        with open(PICKLE_FILE, 'rb') as f:
+            gan_dataset, wgan_dataset, wgangp_dataset, sngan_dataset = pickle.load(f)
+    else:
+        # GAN 데이터셋 생성
+        gan_dataset = src.utils.get_gan_dataset(src.gans.GAN())
+        wgan_dataset = src.utils.get_gan_dataset(src.gans.WGAN())
+        wgangp_dataset = src.utils.get_gan_dataset(src.gans.WGANGP())
+        sngan_dataset = src.utils.get_gan_dataset(src.gans.SNGAN())
+        
+        # PICKLE_FILE에 pickle 파일로 저장
+        with open(PICKLE_FILE, 'wb') as f:
+            pickle.dump((gan_dataset, wgan_dataset, wgangp_dataset, sngan_dataset), f)
+        
 
     ############ GAN ############
     print("============ RF with GAN ============")

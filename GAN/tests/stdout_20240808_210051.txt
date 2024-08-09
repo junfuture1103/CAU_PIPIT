@@ -1,0 +1,6 @@
+Started testing RGAN-TL Classifier
+============ RandomForest ============
+Accuracy :  0.3338
+Precision :  0.333
+Recall :  0.3338
+f1-score :  0.3281

@@ -1,23 +1,15 @@
 Started testing RGAN-TL Classifier
-============ LGBM ============
+============ RandomForest ============
 Accuracy :  0.3338
 Precision :  0.333
 Recall :  0.3338
 f1-score :  0.3281
 x_size: 14, type: <class 'int'>
-start ganfit
-done ganfit
 Loading datasets from pickle/gan_dataset.p
 x_size: 14, type: <class 'int'>
-start ganfit
-done ganfit
 Loading datasets from pickle/wgan_dataset.p
 x_size: 14, type: <class 'int'>
-start ganfit
-done ganfit
 Loading datasets from pickle/wgangp_dataset.p
-start ganfit
-done ganfit
 Loading datasets from pickle/sngan_dataset.p
 ============ RF with GAN ============
 Accuracy :  0.34
