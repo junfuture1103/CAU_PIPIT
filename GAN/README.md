@@ -1,42 +1,41 @@
-Anaconda 환경에서 requirements.txt 파일을 사용한 환경 구축
-Anaconda에서는 pip로 설치된 패키지를 포함하는 환경을 설정할 수 있습니다. requirements.txt 파일을 사용하여 Anaconda 환경을 만드는 방법은 다음과 같습니다:
+CAU_PIPIT GAN 실습을 위한 환경세팅 설명문서입니다.
+우선 각자 모든 환경이 다르기 때문에, python 가상환경 venv를 이용합니다.
 
-새로운 Conda 환경 생성:
-새로운 Anaconda 환경을 만들 때는 conda create 명령어를 사용합니다. Python 버전도 명시할 수 있습니다.
+모든과정 촬영영상 (약 5분)
+https://youtu.be/vbANYv4F5r8
 
-```
-conda create -n myenv python=3.8
-```
+파이썬 가상환경을 이용하면 파이썬 라이브러리를 본래 컴퓨터에 있는 환경과는 독립적으로
+설치 및 관리할 수 있어 매우 용이합니다.
 
-myenv는 환경의 이름입니다. 원하는 이름으로 바꾸면 됩니다.
+1. 가상환경 생성
+먼저, 파이썬 가상환경을 생성하기 위해 터미널이나 명령 프롬프트를 엽니다.
 
-환경 활성화:
-생성한 환경을 활성화합니다.
+bash
+코드 복사
+python -m venv myenv
+myenv는 가상환경의 이름입니다. 원하는 이름으로 변경할 수 있습니다.
+2. 가상환경 활성화
+가상환경을 활성화하려면 아래 명령을 사용하세요.
 
-```
-conda activate myenv
-```
+Windows:
+myenv\Scripts\activate
 
-requirements.txt 파일을 사용하여 패키지 설치:
-requirements.txt 파일에 정의된 패키지를 설치합니다. 이 과정에서 pip 명령어를 사용할 수 있습니다.
+macOS/Linux:
+source myenv/bin/activate
+가상환경이 활성화되면 터미널 프롬프트 앞에 (myenv)와 같은 표시가 나타납니다.
 
-```
+3. requirements.txt를 사용하여 모듈 설치
+다른 환경에서 동일한 모듈을 설치하려면, 아래 명령을 사용하여 requirements.txt 파일에 명시된 모듈을 일괄 설치할 수 있습니다.
+requirements.txt는 이미 사전에 생성해두었기 때문에, 존재하는 requirements.txt로 설치하면됩니다.
+
 pip install -r requirements.txt
-```
+이 명령을 실행하면 requirements.txt에 있는 모든 모듈이 가상환경에 설치됩니다.
 
-Conda는 conda install 명령어도 제공하지만, requirements.txt 파일에 정의된 패키지는 pip를 통해 설치하는 것이 일반적입니다.
+4. 가상환경 비활성화
+작업을 마친 후, 가상환경을 비활성화하려면 아래 명령을 사용하세요.
 
-```
-#start action
-cd scripts
-python3 main_script.py
-```
+deactivate
+이 명령을 실행하면 가상환경이 비활성화되고, 기본 파이썬 환경으로 돌아갑니다.
 
-환경 비활성화:
-작업이 끝난 후 환경을 비활성화할 수 있습니다.
-
-```
-conda deactivate
-```
-
-이 방법을 사용하면 Anaconda 환경에서 pip로 설치된 패키지까지 포함하여 필요한 모든 패키지를 손쉽게 관리하고 설치할 수 있습니다.
+5. main_script.py 실행
+이후 scripts/main_script.py를 실행하면됩니다.
