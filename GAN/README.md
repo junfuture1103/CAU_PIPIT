@@ -10,8 +10,9 @@ https://youtu.be/vbANYv4F5r8
 ### 1. 가상환경 생성
 먼저, 파이썬 가상환경을 생성하기 위해 터미널이나 명령 프롬프트를 엽니다.
 
-
+```
 python -m venv CAU_PIPIT_VENV
+```
 CAU_PIPIT_VENV는 가상환경의 이름입니다. 
 원하는 이름으로 변경할 수 있지만
 
